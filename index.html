@@ -171,8 +171,19 @@
 
   yesBtn.onclick = () => {
     result.style.display = "block";
-    song.volume = 0.7;
+
+    // FADE-IN MUSIC
+    song.volume = 0;
     song.play();
+    let vol = 0;
+    const fade = setInterval(() => {
+      if(vol < 0.7){
+        vol += 0.02;
+        song.volume = vol;
+      } else {
+        clearInterval(fade);
+      }
+    }, 100);
   };
 
   noBtn.addEventListener("mouseover", () => {
@@ -196,4 +207,3 @@
 
 </body>
 </html>
-
